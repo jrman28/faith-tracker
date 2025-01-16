@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# Welcome to Faith Habits 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Faith Habits is a minimalist, gamified habit-tracking app designed to help users build Christian biblical principles into their daily routines. The app focuses on simplicity, ease of use, and gentle encouragement through gamification.
 
 ## Get started
 
@@ -34,6 +34,12 @@ npm run reset-project
 ```
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Using NativeWind for Styling
+
+Faith Habits uses NativeWind for styling. NativeWind is a utility-first CSS-in-JS framework that allows you to style your React Native components using Tailwind CSS classes. This approach provides a consistent and efficient way to style your app.
+
+To learn more about NativeWind, visit the [official documentation](https://www.nativewind.dev/).
 
 ## Learn more
 

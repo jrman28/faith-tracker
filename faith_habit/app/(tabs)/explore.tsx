@@ -1,11 +1,19 @@
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { styled } from 'nativewind';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { useState } from 'react';
 
 const habits = [
-  { id: '1', name: 'Exercise', completed: false },
-  { id: '2', name: 'Meditate', completed: false },
-  { id: '3', name: 'Read', completed: false },
+  { id: '1', name: 'Prayer', completed: false },
+  { id: '2', name: 'Bible Reading', completed: false },
+  { id: '3', name: 'Worship', completed: false },
+  { id: '4', name: 'Fasting', completed: false },
+  { id: '5', name: 'Serving Others', completed: false },
 ];
+
+const StyledView = styled(View);
+const StyledText = styled(Text);
+const StyledTouchableOpacity = styled(TouchableOpacity);
+const StyledFlatList = styled(FlatList);
 
 export default function ExploreScreen() {
   const [habitList, setHabitList] = useState(habits);
@@ -19,56 +27,23 @@ export default function ExploreScreen() {
   };
 
   const renderHabit = ({ item }) => (
-    <TouchableOpacity
-      style={[styles.habitItem, item.completed && styles.habitItemCompleted]}
+    <StyledTouchableOpacity
+      className={`p-4 bg-white rounded-lg mb-2 shadow ${item.completed ? 'bg-gray-300' : ''}`}
       onPress={() => toggleHabitCompletion(item.id)}
     >
-      <Text style={styles.habitText}>{item.name}</Text>
-    </TouchableOpacity>
+      <StyledText className="text-lg">{item.name}</StyledText>
+    </StyledTouchableOpacity>
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Explore Habits</Text>
-      <FlatList
+    <StyledView className="flex-1 bg-gray-100 p-4">
+      <StyledText className="text-2xl font-bold mb-4">Explore Habits</StyledText>
+      <StyledFlatList
         data={habitList}
         renderItem={renderHabit}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.habitList}
+        contentContainerStyle={{ paddingBottom: 16 }}
       />
-    </View>
+    </StyledView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  habitList: {
-    paddingBottom: 16,
-  },
-  habitItem: {
-    padding: 16,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    marginBottom: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  habitItemCompleted: {
-    backgroundColor: '#D3D3D3',
-  },
-  habitText: {
-    fontSize: 18,
-  },
-});
